@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 from datetime import datetime, timedelta
+from persiantools.jdatetime import JalaliDateTime
 
 df = pd.read_excel("news.xlsx")
 
@@ -20,7 +21,11 @@ for time_str in df["time"]:
 
 df["converted_time"] = converted_times
 
+
 df["date_time"] = df["converted_time"].apply(lambda p: datetime.now() - timedelta(minutes=p))
+
+
+df["shamsi_date_time"] = df["date_time"].apply(lambda d: JalaliDateTime(d).strftime("%Y-%m-%d %H:%M:%S"))
 
 
 def view_cleaner(view):

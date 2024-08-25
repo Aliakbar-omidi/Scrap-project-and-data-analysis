@@ -24,7 +24,6 @@ for group in ["sport", "social", "money"]:
             "views": my_list[6],
         }
         all_news_dict.append(news_dict)
-        print(all_news_dict)
 
 driver.close()
 
