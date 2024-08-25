@@ -10,7 +10,7 @@ def extract_time(time_str):
     return t_value
 
 
-df["date_time"] = df["time"].apply(extract_time)
+# df["date_time"] = df["time"].apply(extract_time)
 
 converted_times = []
 

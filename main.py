@@ -1,11 +1,8 @@
-import time
 
+import time
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 
 all_news_dict = []
 
@@ -17,16 +14,8 @@ for group in ["sport", "social", "money"]:
 
     news_list = driver.find_elements(By.CSS_SELECTOR, ".rectangle_container__rBE5L")
 
-    # for link in driver.find_elements(By.CSS_SELECTOR, ".rectangle_image_container__OCyhG a"):
-    #     try:
-    #         link = link.get_attribute("href")
-    #         driver.get(link)
-    #     except:
-    #         pass
-
     for news in news_list:
         my_list = news.text.split("\n")
-        # print(my_list)
         news_dict = {
             "group": my_list[0],
             "time": my_list[2],
@@ -40,8 +29,6 @@ for group in ["sport", "social", "money"]:
 
 driver.close()
 
-
-import pandas as pd
 
 df = pd.DataFrame(all_news_dict)
 df.to_excel("news.xlsx", index=False)
