@@ -1,4 +1,3 @@
-
 import time
 import pandas as pd
 from selenium import webdriver
@@ -28,7 +27,6 @@ for group in ["sport", "social", "money"]:
         print(all_news_dict)
 
 driver.close()
-
 
 df = pd.DataFrame(all_news_dict)
 df.to_excel("news.xlsx", index=False)
